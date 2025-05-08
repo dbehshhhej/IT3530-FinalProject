@@ -40,9 +40,9 @@ shortcut_path="/home/${USER}/Desktop/${shortcut_name}.desktop"
 echo "[Desktop Entry]" > "$shortcut_path"
 echo "Type=Application" >> "$shortcut_path"
 echo "Name=$shortcut_name" >> "$shortcut_path"
-echo "Exec=$script_file" >> "$shortcut_path"
+echo "Exec=bash $script_file" >> "$shortcut_path"
 echo "Icon=$image_file" >> "$shortcut_path"
-echo "Terminal=False" >> "$shortcut_path"
+echo "Terminal=true" >> "$shortcut_path"
 echo "Categories=Main;" >> "$shortcut_path"
 
 
@@ -50,7 +50,7 @@ echo "Categories=Main;" >> "$shortcut_path"
 mv "$shortcut_path" "/home/${USER}/Desktop/"
 
 # Make the .desktop file executable
-chmod +x "/home/${USER}/Desktop/${shortcut_name}.desktop"
+chmod +x "$shortcut_path"
 
 # Use Zenity to notify user that the .desktop file has been created and moved
 zenity --info --text="The desktop shortcut '${shortcut_name}' has been successfully created!"
